@@ -17,31 +17,6 @@ import "./header.css"
 import styled, { ThemeProvider } from "styled-components"
 import HomeScreen from "../Home/HomeScreen";
 
-
-const themeDefault = {
-  id: "default",
-  colorPrimary: "aqua",
-  colorSecondary: "rgb(255, 132, 0)",
-  colorText: "black"
-}
-const themeLight = {
-  id: "light",
-  colorBackground: "white",
-  colorText:"black",
-}
-
-const themeDark = {
-  id: "dark",
-  colorBackground: "black",
-  colorPrimary: "rgb(255, 132, 0)",
-  colorText:"white",
-}
-
-const StyledButton = styled.button`
-  background: ${(p)=>p.theme.colorPrimary};
-  color: ${(p)=>p.theme.colorText}
-`;
-
 const Header = () => {
   const { i18n, t } = useTranslation();
   let navigate = useNavigate();
@@ -51,28 +26,6 @@ const Header = () => {
   )
   const { userInfo  } = userLogin
 
-  const [theme, setTheme] = useState(themeDefault)
-
-  const handleTheme = () =>{
-    if (theme.id === "dark"){
-      setTheme({
-        ...themeDefault,
-        ...themeLight
-      })
-    } else {
-      setTheme({
-        ...themeDefault,
-        ...themeDark
-      })
-    }
-
-  }
-
-  useEffect(() => {
-    setTheme({
-      ...themeDefault, ...themeLight
-    })
-  }, [])
 
   const logoutHandler = async (e: SyntheticEvent) => {
     e.preventDefault()
@@ -82,7 +35,7 @@ const Header = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
    <header>
         <Navbar className='py-0' variant='dark' expand='lg' collapseOnSelect>
       <Container fluid>
@@ -90,7 +43,6 @@ const Header = () => {
       <img className="img-fluid" src={Logo} alt="CPAAS TCL" />
      {/* {t<string>("CpaasHeading")} */}
      </Link>
-     <StyledButton className='theme-toggle' onClick={handleTheme}>Change Theme</StyledButton>
         {/* <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
             {localStorage.token ? (<Nav >
@@ -133,7 +85,7 @@ const Header = () => {
       </Container>
     </Navbar>
    </header>
-   </ThemeProvider>
+   </>
   )
 }
 

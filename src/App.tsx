@@ -7,22 +7,28 @@ import "./i18n";
 import {useTranslation} from "react-i18next";
 import {availableLanguages} from "./i18n";
 import Header from "./components/Header/Header"
+import { Toggle } from './components/Toggle';
+import { useDarkMode } from './styles/useDarkMode';
+import { GlobalStyles, lightTheme, darkTheme } from './styles/globalStyles';
+import styled, { ThemeProvider } from 'styled-components';
 
 const App = () => {
+  const [ theme, toggleTheme ] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   const {t, i18n} = useTranslation()
   return (
-    <>
-      <main>
-        <Header />       
-          <Routes>
-          <Route path="/" element={<HomeScreen/>} />
-          {/* <Route exact path={process.env.PUBLIC_URL + "/"} ><HomeScreen/></Route> */}
-          <Route path="/login" element={<Login/>} />
-          <Route path="/setpassword" element={<SetPassword/>} />
-          </Routes>
-          </main>
-          <h6 className="mode-text">Mode - {process.env.NODE_ENV} user - {process.env.name}</h6>
-    </>
+    <ThemeProvider theme={themeMode}>
+    <Header /> 
+    <GlobalStyles />
+    <Routes>
+    <Route path="/" element={<HomeScreen/>} />
+    {/* <Route exact path={process.env.PUBLIC_URL + "/"} ><HomeScreen/></Route> */}
+    <Route path="/login" element={<Login/>} />
+    <Route path="/setpassword" element={<SetPassword/>} />
+    </Routes>
+    <h6 className="mode-text">Mode - {process.env.NODE_ENV} user - {process.env.name}</h6>
+    <Toggle theme={theme} toggleTheme={toggleTheme} />      
+    </ThemeProvider>
   );
 };
 

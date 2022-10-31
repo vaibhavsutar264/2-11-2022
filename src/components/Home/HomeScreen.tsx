@@ -7,40 +7,37 @@ import styled, { ThemeProvider } from "styled-components"
 import { useState, useEffect } from 'react';
 import "./homeScreen.css"
 
-const themeDefault = {
-  id: "default",
-  colorPrimary: "aqua",
-  colorSecondary: "rgb(255, 132, 0)",
-  colorText: "black"
-}
-const themeLight = {
-  id: "light",
-  colorBackground: "white",
-  colorText:"black",
-}
+// const themeDefault = {
+//   id: "default",
+//   colorPrimary: "aqua",
+//   colorSecondary: "rgb(255, 132, 0)",
+//   colorText: "black"
+// }
+// const themeLight = {
+//   id: "light",
+//   colorBackground: "white",
+//   colorText:"black",
+// }
 
-const themeDark = {
-  id: "dark",
-  colorBackground: "black",
-  colorPrimary: "rgb(255, 132, 0)",
-  colorText:"white",
-}
+// const themeDark = {
+//   id: "dark",
+//   colorBackground: "black",
+//   colorPrimary: "rgb(255, 132, 0)",
+//   colorText:"white",
+// }
 
-const StyledH1 = styled.h1`
-  background: ${(p)=>p.theme.colorPrimary};
-  color: ${(p)=>p.theme.colorText}
-`;
+// const StyledH1 = styled.h1`
+//   background: ${(p)=>p.theme.colorPrimary};
+// `;
 
-const StyledButton = styled.button`
-  background: ${(p)=>p.theme.colorPrimary};
-  color: ${(p)=>p.theme.colorText}
-`;
+// const StyledButton = styled.button`
+//   background: ${(p)=>p.theme.colorPrimary};
+//   color: ${(p)=>p.theme.colorText}
+// `;
 
-const StyledWrapper = styled.div`
-background: ${(p)=>p.theme.colorBackground};
-color: ${(p)=>p.theme.colorText};
-transition: background 0.5s;
-`
+// const StyledWrapper = styled.div`
+// transition: background 0.5s;
+// `
 
 const HomeScreen = () => {
   const {t, i18n} = useTranslation()
@@ -51,28 +48,30 @@ const HomeScreen = () => {
   const { userInfo } = userLogin
   const email = userInfo ? userInfo.email : null
 
-  const [theme, setTheme] = useState(themeDefault)
+  // const [theme, setTheme] = useState(themeDefault)
 
-  const handleTheme = () =>{
-    if (theme.id === "dark"){
-      setTheme({
-        ...themeDefault,
-        ...themeLight
-      })
-    } else {
-      setTheme({
-        ...themeDefault,
-        ...themeDark
-      })
-    }
+  // const handleTheme = () =>{
+  //   if (theme.id === "dark"){
+  //     setTheme({
+  //       ...themeDefault,
+  //       ...themeLight,
+  //     })
+  //     localStorage.setItem("theme", theme.id )
+  //   } else {
+  //     setTheme({
+  //       ...themeDefault,
+  //       ...themeDark,
+  //     })
+  //     localStorage.setItem("theme", theme.id )
+  //   }
 
-  }
+  // }
 
-  useEffect(() => {
-    setTheme({
-      ...themeDefault, ...themeLight
-    })
-  }, [])
+  // useEffect(() => {
+  //   setTheme({
+  //     ...themeDefault, ...themeLight
+  //   })
+  // }, [])
   
 
   // const newTheme = { ...themeDefault, ...themeLight}
@@ -81,8 +80,10 @@ const HomeScreen = () => {
   
 
   return(
-    <ThemeProvider theme={theme}><StyledWrapper className="main-div"><StyledH1 data-testid="password-exist" id='coloring'>{t<string>('home')}</StyledH1> <StyledButton className='theme-toggle' onClick={handleTheme}>Change Theme</StyledButton><StyledWrapper className="centering-div"><StyledH1 className='h1-padding'>TCL-CPAAS {t<string>('home')}</StyledH1></StyledWrapper></StyledWrapper>
-    </ThemeProvider>
+    // <ThemeProvider theme={theme}><StyledWrapper className="main-div"><StyledH1 data-testid="password-exist" >{t<string>('home')}</StyledH1> <StyledButton className='theme-toggle' onClick={handleTheme}>Change Theme</StyledButton><StyledWrapper className="centering-div"><StyledH1 className='h1-padding'>TCL-CPAAS {t<string>('home')}</StyledH1></StyledWrapper></StyledWrapper>
+    // </ThemeProvider>
+    <><div className="main-div"><h1 data-testid="password-exist" className="homescreen-text" >{t<string>('home')}</h1><div className="centering-div"><h1 className='h1-padding'>TCL-CPAAS {t<string>('home')}</h1></div></div>
+    </>
   )
 } 
 

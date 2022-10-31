@@ -14,39 +14,37 @@ import { useNavigate } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components"
 
 
-const themeDefault = {
-  id: "default",
-  colorPrimary: "aqua",
-  colorSecondary: "rgb(255, 132, 0)",
-}
-const themeLight = {
-  id: "light",
-  colorBackground: "white",
-  colorText:"black",
-}
+// const themeDefault = {
+//   id: "default",
+//   colorPrimary: "aqua",
+//   colorSecondary: "rgb(255, 132, 0)",
+// }
+// const themeLight = {
+//   id: "light",
+//   colorBackground: "white",
+//   colorText:"black",
+// }
 
-const themeDark = {
-  id: "dark",
-  colorBackground: "orange",
-  colorPrimary: "rgb(255, 132, 0)",
-  colorText:"purple",
-}
+// const themeDark = {
+//   id: "dark",
+//   colorBackground: "orange",
+//   colorPrimary: "rgb(255, 132, 0)",
+//   colorText:"purple",
+// }
 
-const StyledH1 = styled.h1`
-  background: ${(p)=>p.theme.colorPrimary};
-  color: ${(p)=>p.theme.colorText}
-`;
+// const StyledH1 = styled.h1`
+//   background: ${(p)=>p.theme.colorPrimary};
+//   color: ${(p)=>p.theme.colorText}
+// `;
 
-const StyledButton = styled.button`
-  background: ${(p)=>p.theme.colorPrimary};
-  color: ${(p)=>p.theme.colorText}
-`;
+// const StyledButton = styled.button`
+//   background: ${(p)=>p.theme.colorPrimary};
+//   color: ${(p)=>p.theme.colorText}
+// `;
 
-const StyledWrapper = styled.div`
-background: ${(p)=>p.theme.colorBackground};
-color: ${(p)=>p.theme.colorText};
-transition: background 0.5s;
-`
+// const StyledWrapper = styled.div`
+// transition: background 0.5s;
+// `
 
 const Login = () => {
   let navigate = useNavigate();
@@ -55,22 +53,22 @@ const Login = () => {
   const [open, setOpen] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [theme, setTheme] = useState(themeDefault)
+  // const [theme, setTheme] = useState(themeDefault)
 
-  const handleTheme = () =>{
-    if (theme.id === "dark"){
-      setTheme({
-        ...themeDefault,
-        ...themeLight
-      })
-    } else {
-      setTheme({
-        ...themeDefault,
-        ...themeDark
-      })
-    }
+  // const handleTheme = () =>{
+  //   if (theme.id === "dark"){
+  //     setTheme({
+  //       ...themeDefault,
+  //       ...themeLight
+  //     })
+  //   } else {
+  //     setTheme({
+  //       ...themeDefault,
+  //       ...themeDark
+  //     })
+  //   }
 
-  }
+  // }
 
   const dispatch = useDispatch();
   const userLogin = useSelector<RootState, UserState>(
@@ -78,16 +76,10 @@ const Login = () => {
   );
   const { userInfo, error, token } = userLogin;
   useEffect(() => {
-    // if (error) {
-    //   alert.error(error);
-    // }
     if (userInfo && userInfo !== null  ) {
       navigate('/setpassword')
       console.log("navigate pending");
     }
-    setTheme({
-      ...themeDefault, ...themeLight
-    })
   }, [userInfo]);
 
   const submitHandler = async (e: SyntheticEvent) => {
@@ -120,27 +112,18 @@ const Login = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      {/* <header>
-        <div className="container-fluid">
-          <a href="#" className="logo">
-            <img className="img-fluid" src={logo} alt="CPaaS Logo" />
-          </a>
-        </div>
-      </header> */}
-      
+    <>
       <div className="login-area">
         <div className="container">
           <div className="row">
             <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12"></div>
             <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
-              <StyledWrapper className="login-form">
+              <div className="login-form">
                 <div className="form-title">
                   <h5 className="title">{t<string>('loginHeading')}</h5>
                   <p className="sub-title">{t<string>('enterEmailAndPassword')}</p>
                   <p className="sub-title making-color-red" id="making-color-red">{error && error}</p>
                 </div>
-          <StyledButton onClick={handleTheme}>Change Theme</StyledButton>
                 <form onSubmit={submitHandler} action="#" method="post">
                   <div className="input-group mb-3">
                     <span className="input-group-text icon" id="username">
@@ -301,12 +284,12 @@ const Login = () => {
                     </button>
                   </div>
                 </form>
-              </StyledWrapper>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </ThemeProvider>
+    </>
   );
 };
 

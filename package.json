@@ -37,8 +37,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "webpack serve --config webpack/webpack.config.js --env env=dev --open",
-    "start-without-webpack": "react-scripts start",
+    "start": "react-scripts start",
+    "start-with-webpack": "webpack serve --config webpack/webpack.config.js --env env=dev --open",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "build-without-webpack": "react-scripts build",
     "test": "react-scripts test",
