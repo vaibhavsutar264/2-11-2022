@@ -34,12 +34,19 @@ export const GlobalStyles = createGlobalStyle`
   .homescreen-text{
     color: ${({ theme }) => theme.text};
   }
+  .login-area .forgot-password {
+    color: ${({ theme }) => theme.textForLogin};
+  }
+  .login-area .form-title p.sub-title {
+    color: ${({ theme }) => theme.textForLogin};
+  }
 
 `;
 
 export const lightTheme = {
   body: '#fff',
   text: '#121212',
+  textForLogin:"#858585",
   primary: '#6200ee',
   background: "white"
 };
@@ -47,6 +54,7 @@ export const lightTheme = {
 export const darkTheme = {
   body: '#121212',
   text: '#fff',
+  textForLogin:"white",
   primary: '#bb86fc',
   background: "black"
 };

@@ -76,9 +76,8 @@ const Login = () => {
   );
   const { userInfo, error, token } = userLogin;
   useEffect(() => {
-    if (userInfo && userInfo !== null  ) {
+    if (userLogin.userInfo && userLogin.userInfo.token !== null  ) {
       navigate('/setpassword')
-      console.log("navigate pending");
     }
   }, [userInfo]);
 
