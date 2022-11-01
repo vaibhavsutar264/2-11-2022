@@ -1,6 +1,22 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+export const lightTheme = {
+  body: '#fff',
+  text: '#121212',
+  textForLogin:"#858585",
+  primary: '#6200ee',
+  background: "white"
+};
+
+export const darkTheme = {
+  body: '#121212',
+  text: '#fff',
+  textForLogin:"white", 
+  primary: '#bb86fc',
+  background: "black"
+};
+
+export const GlobalStyles = createGlobalStyle<{theme: String}>`
   body {
     background: ${({ theme }) => theme.body};
     font-family: 'Roboto', sans-serif;
@@ -40,21 +56,4 @@ export const GlobalStyles = createGlobalStyle`
   .login-area .form-title p.sub-title {
     color: ${({ theme }) => theme.textForLogin};
   }
-
 `;
-
-export const lightTheme = {
-  body: '#fff',
-  text: '#121212',
-  textForLogin:"#858585",
-  primary: '#6200ee',
-  background: "white"
-};
-
-export const darkTheme = {
-  body: '#121212',
-  text: '#fff',
-  textForLogin:"white",
-  primary: '#bb86fc',
-  background: "black"
-};

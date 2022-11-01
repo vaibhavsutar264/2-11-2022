@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 export const useDarkMode = () => {
   const [ theme, setTheme ] = useState('dark');
 
-  const setMode = mode => {
+  const setMode = (mode:any) => {
     window.localStorage.setItem('theme', mode);
     setTheme(mode);
   }

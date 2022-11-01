@@ -13,39 +13,6 @@ import { useNavigate } from "react-router-dom";
 // import { useAlert } from "react-alert";
 import styled, { ThemeProvider } from "styled-components"
 
-
-// const themeDefault = {
-//   id: "default",
-//   colorPrimary: "aqua",
-//   colorSecondary: "rgb(255, 132, 0)",
-// }
-// const themeLight = {
-//   id: "light",
-//   colorBackground: "white",
-//   colorText:"black",
-// }
-
-// const themeDark = {
-//   id: "dark",
-//   colorBackground: "orange",
-//   colorPrimary: "rgb(255, 132, 0)",
-//   colorText:"purple",
-// }
-
-// const StyledH1 = styled.h1`
-//   background: ${(p)=>p.theme.colorPrimary};
-//   color: ${(p)=>p.theme.colorText}
-// `;
-
-// const StyledButton = styled.button`
-//   background: ${(p)=>p.theme.colorPrimary};
-//   color: ${(p)=>p.theme.colorText}
-// `;
-
-// const StyledWrapper = styled.div`
-// transition: background 0.5s;
-// `
-
 const Login = () => {
   let navigate = useNavigate();
   // const alert = useAlert();
@@ -53,22 +20,7 @@ const Login = () => {
   const [open, setOpen] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [theme, setTheme] = useState(themeDefault)
-
-  // const handleTheme = () =>{
-  //   if (theme.id === "dark"){
-  //     setTheme({
-  //       ...themeDefault,
-  //       ...themeLight
-  //     })
-  //   } else {
-  //     setTheme({
-  //       ...themeDefault,
-  //       ...themeDark
-  //     })
-  //   }
-
-  // }
+  const [passwordShown, setPasswordShown] = useState(false);
 
   const dispatch = useDispatch();
   const userLogin = useSelector<RootState, UserState>(
@@ -87,21 +39,39 @@ const Login = () => {
     // navigate('/setpassword')
 
   };
-  const inputElement = document.getElementById(
-    "passwordTitle"
-  ) as HTMLInputElement;
-  const messageElement = document.getElementById("message") as HTMLInputElement;
-  if (inputElement != null) {
-    messageElement.style.display = "block";
-  } else {
-    console.log("abcd");
-  }
+  // const inputElement = document.getElementById(
+  //   "passwordTitle"
+  // ) as HTMLInputElement;
+  // const messageElement = document.getElementById("message") as HTMLInputElement;
+  // if (inputElement != null) {
+  //   messageElement.style.display = "block";
+  // } else {
+  //   console.log("abcd");
+  // }
 
   const handleChange = (e: SyntheticEvent) => {
     e.preventDefault();
     const patternVariable =
       "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}";
+      const submitButtonElement = document.getElementById("btn-enable-style") as HTMLInputElement;
     if ((e.target as HTMLInputElement).value.match(patternVariable)) {
+      (e.target as HTMLInputElement).className="form-control input-custom is-valid"
+      submitButtonElement.className="login-btn btn-enable-style"
+      setOpen(false);
+
+    } else {
+      (e.target as HTMLInputElement).className="form-control input-custom"
+      submitButtonElement.className="login-btn"
+      setOpen(true);
+    }
+  };
+
+  const handleEmailChange = (e: SyntheticEvent) => {
+    e.preventDefault();
+    const emailVariable =
+      "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+      // const submitButtonElement = document.getElementById("btn-enable-style") as HTMLInputElement;
+    if ((e.target as HTMLInputElement).value.match(emailVariable)) {
       (e.target as HTMLInputElement).className="form-control input-custom is-valid"
       setOpen(false);
     } else {
@@ -109,6 +79,16 @@ const Login = () => {
       setOpen(true);
     }
   };
+
+  const eyeToggle = () => {
+    // const passwordElement = document.getElementById("password") as HTMLInputElement;
+    // if (passwordElement.type === "password"){
+    //       passwordElement.type = "text";
+    //  } else{
+    //         passwordElement.type = "password";
+    //  }
+     setPasswordShown(!passwordShown);
+  }
 
   return (
     <>
@@ -156,12 +136,12 @@ const Login = () => {
                         onChange={(e) =>
                           setEmail((e.target as HTMLInputElement).value)
                         }
+                        onInput={handleEmailChange}
                         autoComplete="none"
                         placeholder="Enter your email"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         value={email}
-                        // className="form-control input-custom is-valid"
-                        className={email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$") ? "form-control input-custom is-valid" : "form-control input-custom"}
+                        className={error?("form-control input-custom is-invalid"): ("form-control input-custom is-valid") }
                         id="username"
                       />
                       <label htmlFor="username">{t<string>('email')}</label>
@@ -242,12 +222,12 @@ const Login = () => {
                         id="password"
                         autoComplete="false"
                         name="password"
-                        type="password"
+                        type={passwordShown ? "text" : "password"}
                         data-testid="password-element"
                         placeholder="Password"
-                        className="form-control input-custom"
+                        className={error?("form-control input-custom is-invalid"): ("form-control input-custom is-valid") }
                         value={password}
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters."
+                        // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters."
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?\|\]\[\(\)\-<>/]).{8,}"
                         onInput={handleChange}
                         onChange={(e) =>
@@ -255,7 +235,7 @@ const Login = () => {
                         }
                       />
                       <label htmlFor="password">{t<string>('password')}</label>
-                      <button type="button" className="Password-showandhide">
+                      <button onClick={eyeToggle} type="button" className="Password-showandhide">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-slash" viewBox="0 0 16 16">
                         <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
                         <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
@@ -274,7 +254,7 @@ const Login = () => {
                     </a>
                   </div>
                   <div className="input-group">
-                    <button type="submit" name="submit" disabled={open} className="login-btn">
+                    <button id="btn-enable-style" type="submit" name="submit" disabled={open} className="login-btn">
                     {t<string>('loginBtn')}
                     </button>
                   </div>
