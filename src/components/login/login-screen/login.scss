@@ -148,6 +148,10 @@ header .logo img {
     box-shadow: none !important;
     outline: none !important;
     margin-top: 30px;
+    &.active {
+        opacity: 1;
+        background: transparent linear-gradient(297deg, #F57C52 0%, #D63548 100%) 0% 0% no-repeat padding-box;
+    }
 }
 
 .mode-text {

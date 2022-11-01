@@ -66,19 +66,12 @@ const Header = () => {
             </Nav>
         </li>
       <li className="nav-item width-adjusting-css">
-      <div className="form-floating">
-          <select 
-              className="form-select language-select" 
-              id="floatingSelect" 
-              aria-label="Floating label select example" 
-              defaultValue={i18n.language}
-              onChange={(e) => {i18n.changeLanguage(e.target.value); localStorage.setItem("lng", e.target.value)}} >
-            {availableLanguages.map((language) => (
+      <select className="form-select language-select" aria-label="Default select example" defaultValue={i18n.language}
+              onChange={(e) => {i18n.changeLanguage(e.target.value); localStorage.setItem("lng", e.target.value)}}>
+  {availableLanguages.map((language) => (
                 <option key={language}>{language}</option>
               ))}
-          </select>
-          <label htmlFor="floatingSelect">Languages</label>
-        </div>
+</select>
             
           </li>
       </ul>

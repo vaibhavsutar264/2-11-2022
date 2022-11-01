@@ -11,14 +11,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-top: 160px solid black;
+    border-top: 140px solid black;
 }
 
 .centering-div{
     display: flex;
     justify-content: center;
     align-items:flex-end;
-    height: 35vh;
+    height: auto;
     background: none;
 }
 
@@ -43,4 +43,9 @@ h1 {
     font-weight: bold;
     border-radius: 7px;
     margin-top: 30px;
+}
+@media (max-width:600px) {
+    .main-div{
+        padding: 200px 20px
+    }
 }

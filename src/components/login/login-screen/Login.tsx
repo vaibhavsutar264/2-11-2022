@@ -113,18 +113,14 @@ const Login = () => {
   return (
     <>
       <div className="login-area">
-        <div className="container">
-          <div className="row">
-            <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12"></div>
-            <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
-              <div className="login-form">
+      <div className="login-form">
                 <div className="form-title">
                   <h5 className="title">{t<string>('loginHeading')}</h5>
                   <p className="sub-title">{t<string>('enterEmailAndPassword')}</p>
                   <p className="sub-title making-color-red" id="making-color-red">{error && error}</p>
                 </div>
                 <form onSubmit={submitHandler} action="#" method="post">
-                  <div className="input-group mb-3">
+                  <div className="input-group mb-4">
                     <span className="input-group-text icon" id="username">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -284,9 +280,6 @@ const Login = () => {
                   </div>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   );
