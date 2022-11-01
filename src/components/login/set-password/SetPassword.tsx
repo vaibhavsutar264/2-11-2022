@@ -4,11 +4,7 @@ import "./setPassword.css";
 const SetPassword = () => {
   return (
     <div className="login-area">
-        <div className="container">
-          <div className="row">
-          <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-9 col-sm-12 col-12"></div>
-        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-10 col-sm-12 col-12 offset-xxl-0 offset-xl-1 offset-md-1 offset-sm-0 offset-0">
-              <div className="login-form">
+      <div className="login-form">
                 <div className="form-title">
                   <h5 className="title">Set Password</h5>
                   <p className="sub-title">Generate new password</p>
@@ -200,9 +196,6 @@ const SetPassword = () => {
                   </div>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
       </div>
   )
 }
