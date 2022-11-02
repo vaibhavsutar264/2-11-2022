@@ -116,7 +116,11 @@ const Login = () => {
                 <div className="form-title">
                   <h5 className="title">{t<string>('loginHeading')}</h5>
                   <p className="sub-title">{t<string>('enterEmailAndPassword')}</p>
-                  <p className="sub-title making-color-red" id="making-color-red">{error && error}</p>
+                  <p className="sub-title making-color-red" id="making-color-red">
+                  {error && error=="Your Email Id and password does not match, Please try again"?(<p>
+                    {t<string>('yourEmailIdPasswordNotMatch')}</p>): error}
+                                 
+                  </p>
                 </div>
                 <form onSubmit={submitHandler} action="#" method="post">
                   <div className="input-group mb-4">

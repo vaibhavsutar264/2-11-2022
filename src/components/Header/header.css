@@ -8,27 +8,17 @@ header {
   left: 0;
   padding: 30px 100px;
 }
-
 header .nav {
   margin-right: 4%;
 }
-
 header .nav .nav-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  align-items: center;
+  justify-content: flex-start;
 }
-
 header .nav .nav-item .nav-link {
   color: white;
 }
-
 header .language-select {
   min-width: 100px;
   max-width: 100px;
@@ -52,33 +42,6 @@ header .logo img {
   text-align: center;
 }
 
-.Password-showandhide {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 30px;
-  height: 30px;
-  border: 0;
-  background: #f7f7f7;
-  outline: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  padding: 0;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  right: 25px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  cursor: pointer;
-}
-
 #making-color-red {
   color: red;
 }
@@ -89,7 +52,6 @@ header .logo img {
   right: 143px;
   z-index: 1;
 }
-
 .theme-toggle-button button {
   width: 35px;
   height: 35px;
@@ -97,22 +59,14 @@ header .logo img {
   border: 0;
   background: none;
   border: 1px solid #444;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .theme-toggle-button button:hover, .theme-toggle-button button:focus {
   background: #D63548;
   border-color: #D63548;
 }
-
 .theme-toggle-button button .bi {
   font-size: 20px;
   color: white;
@@ -123,24 +77,16 @@ header .logo img {
     right: 100px;
   }
 }
-
 @media (max-width: 768px) {
   header a.logo {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
   }
   .theme-toggle-button {
     right: 100px;
   }
 }
-
 @media (max-width: 600px) {
   header {
     padding: 20px 0px;
@@ -167,5 +113,4 @@ header .logo img {
   .main-div {
     border-top: 87px solid black;
   }
-}
-/*# sourceMappingURL=header.css.map */
+}/*# sourceMappingURL=header.css.map */
