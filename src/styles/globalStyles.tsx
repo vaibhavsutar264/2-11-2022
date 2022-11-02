@@ -12,7 +12,7 @@ export const darkTheme = {
   body: '#121212',
   text: '#fff',
   textForLogin:"white", 
-  primary: '#bb86fc',
+  primary: 'linear-gradient(297deg, #F57C52 0%, #D63548 100%) 0% 0% no-repeat padding-box',
   background: "black"
 };
 

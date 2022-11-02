@@ -13,6 +13,11 @@ import { useNavigate } from "react-router-dom";
 // import { useAlert } from "react-alert";
 import styled, { ThemeProvider } from "styled-components"
 
+// const emailValueElement = document.getElementById("username") as HTMLInputElement;
+//   const passwordValueElement = document.getElementById("password") as HTMLInputElement;
+//   emailValueElement.value='';
+//   passwordValueElement.value='';
+
 const Login = () => {
   let navigate = useNavigate();
   // const alert = useAlert();
@@ -28,11 +33,14 @@ const Login = () => {
   );
   const { userInfo, error, token } = userLogin;
   useEffect(() => {
-    if (userLogin.userInfo && userLogin.userInfo.token !== null  ) {
+    if (localStorage.getItem("token") && localStorage.getItem("token")!== null) {
       navigate('/setpassword')
     }
   }, [userInfo]);
 
+  // let inputs = document.querySelectorAll("input");
+  // inputs.forEach((input) => (input.value = null));
+  
   const submitHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
     dispatch(login(email, password, token));
@@ -51,9 +59,9 @@ const Login = () => {
 
   const handleChange = (e: SyntheticEvent) => {
     e.preventDefault();
-    const patternVariable =
-      "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}";
-      const submitButtonElement = document.getElementById("btn-enable-style") as HTMLInputElement;
+    // const patternVariable ="(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}"; //uppercase lowercase symbol and number
+    const patternVariable =".{5,}"; 
+      const submitButtonElement = document.getElementById("btn-enable-style") as HTMLButtonElement;
     if ((e.target as HTMLInputElement).value.match(patternVariable)) {
       (e.target as HTMLInputElement).className="form-control input-custom is-valid"
       submitButtonElement.className="login-btn btn-enable-style"
@@ -89,6 +97,17 @@ const Login = () => {
     //  }
      setPasswordShown(!passwordShown);
   }
+
+  const input = document.querySelector('input') as HTMLInputElement
+
+  if (input) {
+    input.value = ''
+}
+
+  // (document.getElementById("username") as HTMLInputElement).value="";
+  // const passwordValueElement = document.getElementById("password") as HTMLInputElement;
+  // emailValueElement.value='';
+  // passwordValueElement.value='';
 
   return (
     <>
@@ -141,7 +160,7 @@ const Login = () => {
                         placeholder="Enter your email"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         value={email}
-                        className={error?("form-control input-custom is-invalid"): ("form-control input-custom is-valid") }
+                        className={error?("form-control input-custom is-invalid"): ("form-control input-custom") }
                         id="username"
                       />
                       <label htmlFor="username">{t<string>('email')}</label>
@@ -225,7 +244,7 @@ const Login = () => {
                         type={passwordShown ? "text" : "password"}
                         data-testid="password-element"
                         placeholder="Password"
-                        className={error?("form-control input-custom is-invalid"): ("form-control input-custom is-valid") }
+                        className={error?("form-control input-custom is-invalid"): ("form-control input-custom") }
                         value={password}
                         // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters."
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?\|\]\[\(\)\-<>/]).{8,}"

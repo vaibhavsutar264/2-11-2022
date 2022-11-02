@@ -58,8 +58,8 @@ export const login =
       })
       
       localStorage.setItem('userInfo', JSON.stringify(userData))
-      localStorage.setItem('token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
-      localStorage.setItem('tokenFromBackend', token)
+      // localStorage.setItem('token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
+      localStorage.setItem('token', token)
     } catch (error: any) {
       dispatch({
         type: USER_LOGIN_FAIL,
@@ -76,7 +76,6 @@ export const logout =
   async (dispatch: ThunkDispatch<RootState, unknown, AnyAction>) => {
     localStorage.removeItem('token')
     localStorage.removeItem('userInfo')
-    localStorage.removeItem('tokenFromBackend')
     dispatch({ type: USER_LOGOUT })
     
     await fetch('/logout', {

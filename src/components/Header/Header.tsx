@@ -62,9 +62,14 @@ const Header = () => {
                     <Nav.Link></Nav.Link>
                   </Nav>
                 )}
-                <Nav>
+                {localStorage.token ? (
+                  <Nav></Nav>
+                ) : (
+                  <Nav>
                   <Nav.Link href="/login">Login</Nav.Link>
-                </Nav>
+                  </Nav>
+                )}
+                
               </li>
               <li className="nav-item width-adjusting-css">
                 <select
