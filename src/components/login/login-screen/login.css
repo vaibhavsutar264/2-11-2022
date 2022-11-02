@@ -106,13 +106,26 @@ header .logo img {
 }
 
 .login-area .input-custom {
-  height: 70px !important;
+  height: 4.5rem !important;
   border: 1px solid #E8EBF3;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   outline: none !important;
   border-radius: 100px;
-  padding: 0px 70px !important;
+  padding-left: 70px !important;
+  padding-right: 70px !important;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0px;
+  color: #11153B;
+  opacity: 1;
+  background: white;
+}
+
+.login-area .input-custom:hover,
+.login-area .input-custom:focus,
+.login-area .input-custom:active {
+  background: white;
 }
 
 .login-area .input-custom::-webkit-input-placeholder {
@@ -138,7 +151,6 @@ header .logo img {
 .login-area .form-floating label {
   width: 100%;
   padding-left: 70px;
-  padding-top: 1.3rem !important;
 }
 
 .login-area .form-floating > .form-control:focus ~ label,
@@ -151,6 +163,12 @@ header .logo img {
 .login-area .form-control.is-valid, .was-validated .form-control:valid,
 .login-area .form-control.is-invalid, .was-validated .form-control:invalid {
   background-position: right calc(0.375em + 1rem) center !important;
+  background-size: calc(0.75em + 1rem) calc(0.75em + 0.5rem) !important;
+}
+
+.login-area .form-control.is-invalid, .was-validated .form-control:invalid {
+  background-image: none !important;
+  color: #D63548 !important;
 }
 
 .login-area .forgot-password {
@@ -224,7 +242,7 @@ header .logo img {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  right: 25px;
+  right: 30px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   cursor: pointer;
