@@ -118,8 +118,7 @@ const Login = () => {
                   <p className="sub-title">{t<string>('enterEmailAndPassword')}</p>
                   <p className="sub-title making-color-red" id="making-color-red">
                   {error && error=="Your Email Id and password does not match, Please try again"?(<p>
-                    {t<string>('yourEmailIdPasswordNotMatch')}</p>): error}
-                                 
+                    {t<string>('yourEmailIdPasswordNotMatch')}</p>): error}                                
                   </p>
                 </div>
                 <form onSubmit={submitHandler} action="#" method="post">

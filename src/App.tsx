@@ -8,8 +8,8 @@ import {useTranslation} from "react-i18next";
 import {availableLanguages} from "./i18n";
 import Header from "./components/Header/Header"
 import { Toggle } from './components/Toggle';
-import { useDarkMode } from './styles/useDarkMode';
-import { GlobalStyles, lightTheme, darkTheme } from './styles/globalStyles';
+import { useDarkMode } from './themes/useDarkMode';
+import { GlobalStyles, lightTheme, darkTheme } from './themes/globalStyles';
 import styled, { ThemeProvider } from 'styled-components';
 
 const App = () => {

@@ -1,10 +1,7 @@
 import axios from 'axios'
 
-// let token=''
-// token = localStorage.getItem('token') || ''
-
 export default axios.create({
-    baseURL:'http://localhost:4000',
+    baseURL:process.env.REACT_APP_BASE_URL_FOR_BACKEND,
     headers:{
         "Content-Type": "application/json"
     }

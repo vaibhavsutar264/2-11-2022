@@ -23,7 +23,7 @@ header .language-select {
   min-width: 100px;
   max-width: 100px;
   width: 100px;
-  padding: 0.3rem 4.5rem 0.3rem 1rem !important;
+  padding: 0.3rem 2.5rem 0.3rem 1rem !important;
   border-radius: 4px;
   background-position: right 1rem center;
 }
@@ -33,6 +33,7 @@ header .logo img {
 }
 
 .mode-text {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 0;

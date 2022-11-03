@@ -45,7 +45,6 @@ export const GlobalStyles = createGlobalStyle<{theme: String}>`
 
   .login-form{
     background: ${({ theme }) => theme.background};
-    transition: all .5s linear;
   }
   .homescreen-text{
     color: ${({ theme }) => theme.text};
